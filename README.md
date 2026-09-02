@@ -17,3 +17,25 @@ Prerequisites:
 - An email client (application) that is officialy supported by Mailbox.org (or your personal email provider)
     - I personally recommend Thunderbird for both Windows/Android, but you can view the list of supported applications [here](https://kb.mailbox.org/en/private/faq/compatible-web-browsers/)
 - Internet Access
+
+### 1) Add your custom domain to your Mailbox.org account
+
+Make your way through **Settings > All Settings > Email Addresses > Add External alias** (See screenshots below)
+
+Add your custom email address as an external alias. For example `example123@domain.com`
+
+Then Press **save**
+
+![A screenshot showing the settings icon to press](/images/topbar_settings.png)
+
+![Screenshot showing the all settings option](/images/all-settings.png)
+
+![A screenshot showing the email addresses setting](/images/email-addresses-settings.png)
+
+
+
+
+
+
+
+
