@@ -40,11 +40,23 @@ Now that you have added your custom alias - you should get this error. But don't
 
 ![A screenshot showing an error validating external domain](/images/mailbox-security-code.png)
 
-Take a note of the given code. As we are on Porkbun, we will use the first part of the code before our domain.
-`p30oe995fc9105322345b6277ac3b1i2eb45106j5j7`.example.com.
+Take a note of the given code. As we are on Porkbun, we will use the **__first__** and **last** part of the code.
+__`p30oe995fc9105322345b6277ac3b1i2eb45106j5j7`__.example.com. IN TXT `5ahgui6nsdj5kkk666l333m7m7k7n5k6nnnn5bb4`
 
 **NOTE: This is used to verify that you own the domain you want to use as your email address - and you will only need to do this once. After this, any new email addresses on the same domain can be added with no issue, by following Step 1.**
 
+Now, head to your Porkbun domain dashboard and make your way to the **DNS & Nameservers** area:
 
+![An image showing the DNS & Nameservers area](/images/dns-general-settings.png)
+
+*You want to also enable Porkbun DNSSEC, this helps prevent cache poisoning - where an unsuspecting user is sent to what looks like your domain but is instead an attacker controlled domain. As domains are saved in cache, this means that everytime victims go to (what they think is) your domain, they instead go to the attackers website.*
+
+Now, create a new TXT Record and fill the *Host* with the **__first__** part of the code, and the *Answer/Value* with the **last** part of the code.
+
+![An image showing the TXT record option](/images/txt-dropdown.png)
+
+![An image showing the host/answer setting](/images/host-reponse-setting.png)
+
+Now, go back to your Mailbox.org dashboard and press `save` again on your custom email domain.
 
 
