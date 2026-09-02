@@ -83,6 +83,11 @@ Below is a table of Domains you need to add to your Domain's DNS on Porkbun:
 | `MBO0003._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0003._domainkey.mailbox.org.` |
 | `MBO0004._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0004._domainkey.mailbox.org.` |
 
+The DMARC Target, `p=none` could be set to multiple different variables:
+- `p=none` Allows emails that fail verification to be sent normally, but reports are sent back to you.
+- `p=quarantine` Automatically sends emails that fail verification to the user's spam folder.
+- `p=reject` All emails that fail verifications are blocks and not sent
+
 As mentioned above, these act as the rules, validation and resolutions for your domain.
 Then, add `postmaster@YOURDOMAIN` to your Mailbox and you are finished!
 
