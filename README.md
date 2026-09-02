@@ -2,6 +2,16 @@
 ## Overview
 This project shows my journey setting up my own custom email domain for business use. This will also include the lessons learnt, and instructions/guides on any further iterations I make (including DMARC, DKIM setup in the future.)
 
+## Key Concepts I learnt about
+
+The usage of SPF (Sender Policy Framework), DKIM (DomainKeys Identified Mail) and DMARC (Domain-based Message Authentication, Reporting and Comformance) can be simplified significantly
+
+> Rules -> Validation -> Resolution
+
+- The SPF determines what mail servers are authorised to send email on behalf of your domain `example.com`. In our case, we exclusively allow `mailbox.org` and its associated IPs to send emails on our behalf, preventing our emails from being spoofed by malicious actors.
+- The DKIM acts like a hash, ensuring that an email sent from your domain has not been altered in transit (integrity) and further ensures that the email really came from you (authenticity)
+- DMARC defines what happens should an email fail the SPF/DKIM checks. The owner can make emails that fail checks be rejected, quarantine (sent into spam folder) or be sent normally.
+
 ## Why did I choose Porkbun to buy my domain?
 I chose Porkbun primarily because of their WHOIS Privacy feature (which will prevent your details from being looked up on the WHOIS registry), their user-friendly dashboard and their competitive pricing - as I was able to get my domains for a small price compared to other registrars like GoDaddy.
 
@@ -44,7 +54,6 @@ Take a note of the given code. As we are on Porkbun, we will use the first part 
 `p30oe995fc9105322345b6277ac3b1i2eb45106j5j7`.example.com.
 
 **NOTE: This is used to verify that you own the domain you want to use as your email address - and you will only need to do this once. After this, any new email addresses on the same domain can be added with no issue, by following Step 1.**
-
 
 
 
