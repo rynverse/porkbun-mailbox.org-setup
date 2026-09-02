@@ -69,3 +69,21 @@ Now, create a new TXT Record and fill the *Host* with the **__first__** part of 
 
 Now, go back to your Mailbox.org dashboard and press `save` again on your custom email domain.
 
+### 3) Add Additional Security to your Email Domain
+Finally, we should add some security to our email domain. There is a risk malicious actors may try to impersonate us by spoofing our email address, as we have not limited who can send emails from our domain - so we will add a set of rules that must be followed.
+
+Below is a table of Domains you need to add to your Domain's DNS on Porkbun:
+
+| Hostname | Record Type | Target |
+| ------------- | ------------- | ------------- |
+| `@`  | `TXT`  | `v=spf1 include:mailbox.org ~all`  | 
+| `_dmarc.[YOURDOMAIN]`  | `TXT` | `v=DMARC1;p=none;rua=mailto:postmaster@[YOURDOMAIN]` |
+| `MBO0001._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0001._domainkey.mailbox.org.` |
+| `MBO0002._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0002._domainkey.mailbox.org.` | 
+| `MBO0003._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0003._domainkey.mailbox.org.` |
+| `MBO0004._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0004._domainkey.mailbox.org.` |
+
+As mentioned above, these act as the rules, validation and resolutions for your domain.
+Then, add `postmaster@YOURDOMAIN` to your Mailbox and you are finished!
+
+Once that is complete, your custom email domain is all set and secured! Feel free to repeat Step 1 to create aliases for your email.
