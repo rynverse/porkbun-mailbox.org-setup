@@ -18,6 +18,8 @@ Prerequisites:
     - I personally recommend Thunderbird for both Windows/Android, but you can view the list of supported applications [here](https://kb.mailbox.org/en/private/faq/compatible-web-browsers/)
 - Internet Access
 
+This guide will be specific to Porkbun specifically, instructions might differ slightly for other registrars.
+
 ### 1) Add your custom domain to your Mailbox.org account
 
 Make your way through **Settings > All Settings > Email Addresses > Add External alias** (See screenshots below)
@@ -26,15 +28,22 @@ Add your custom email address as an external alias. For example `example123@doma
 
 Then Press **save**
 
-![A screenshot showing the settings icon to press](/images/topbar_settings.png)
+![A screenshot showing the settings icon to press](/images/topbar-settings.png)
 
 ![Screenshot showing the all settings option](/images/all-settings.png)
 
 ![A screenshot showing the email addresses setting](/images/email-addresses-settings.png)
 
+### 2) Add the Mailbox Security Key to your Domain's DNS settings
 
+Now that you have added your custom alias - you should get this error. But don't worry! We will fix this now
 
+![A screenshot showing an error validating external domain](/images/mailbox-security-code.png)
 
+Take a note of the given code. As we are on Porkbun, we will use the first part of the code before our domain.
+`p30oe995fc9105322345b6277ac3b1i2eb45106j5j7`.example.com.
+
+**NOTE: This is used to verify that you own the domain you want to use as your email address - and you will only need to do this once. After this, any new email addresses on the same domain can be added with no issue, by following Step 1.**
 
 
 
