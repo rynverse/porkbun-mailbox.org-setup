@@ -69,7 +69,16 @@ Now, create a new TXT Record and fill the *Host* with the **__first__** part of 
 
 Now, go back to your Mailbox.org dashboard and press `save` again on your custom email domain.
 
-### 3) Add Additional Security to your Email Domain
+### 3) Set up forwarding to your mailbox
+Go back to your Porkbun Domain DNS settings and add the following domains, these just route mail to your inbox:
+| Domain | Record Type | Priority | Target server |
+| ------------- | ------------- | ------------- | ------------- |
+| `[YOUR_DOMAIN]`  | `MX` | `10` | `mxext1.mailbox.org.` |
+| `[YOUR_DOMAIN]`  | `MX` | `10` | `mxext2.mailbox.org.` |
+| `[YOUR_DOMAIN]`  | `MX` | `10` | `mxext3.mailbox.org.` |
+| `[YOUR_DOMAIN]`  | `MX` | `10` | `mxext4.mailbox.org.` |
+
+### 4) Add Additional Security to your Email Domain
 Finally, we should add some security to our email domain. There is a risk malicious actors may try to impersonate us by spoofing our email address, as we have not limited who can send emails from our domain - so we will add a set of rules that must be followed.
 
 Below is a table of Domains you need to add to your Domain's DNS on Porkbun:
@@ -77,11 +86,11 @@ Below is a table of Domains you need to add to your Domain's DNS on Porkbun:
 | Hostname | Record Type | Target |
 | ------------- | ------------- | ------------- |
 | `@`  | `TXT`  | `v=spf1 include:mailbox.org ~all`  | 
-| `_dmarc.[YOURDOMAIN]`  | `TXT` | `v=DMARC1;p=none;rua=mailto:postmaster@[YOURDOMAIN]` |
-| `MBO0001._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0001._domainkey.mailbox.org.` |
-| `MBO0002._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0002._domainkey.mailbox.org.` | 
-| `MBO0003._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0003._domainkey.mailbox.org.` |
-| `MBO0004._domainkey.[YOURDOMAIN]`  | `CNAME` | `MBO0004._domainkey.mailbox.org.` |
+| `_dmarc.[YOUR_DOMAIN]`  | `TXT` | `v=DMARC1;p=none;rua=mailto:postmaster@[YOUR_DOMAIN]` |
+| `MBO0001._domainkey.[YOUR_DOMAIN]`  | `CNAME` | `MBO0001._domainkey.mailbox.org.` |
+| `MBO0002._domainkey.[YOUR_DOMAIN]`  | `CNAME` | `MBO0002._domainkey.mailbox.org.` | 
+| `MBO0003._domainkey.[YOUR_DOMAIN]`  | `CNAME` | `MBO0003._domainkey.mailbox.org.` |
+| `MBO0004._domainkey.[YOUR_DOMAIN]`  | `CNAME` | `MBO0004._domainkey.mailbox.org.` |
 
 The DMARC Target, `p=none` could be set to multiple different variables:
 - `p=none` Allows emails that fail verification to be sent normally, but reports are sent back to you.
@@ -89,6 +98,32 @@ The DMARC Target, `p=none` could be set to multiple different variables:
 - `p=reject` All emails that fail verifications are blocks and not sent
 
 As mentioned above, these act as the rules, validation and resolutions for your domain.
-Then, add `postmaster@YOURDOMAIN` to your Mailbox and you are finished!
+Then, add `postmaster@[YOUR_DOMAIN]` to your Mailbox and you are finished!
 
 Once that is complete, your custom email domain is all set and secured! Feel free to repeat Step 1 to create aliases for your email.
+
+If you want to further check the security of your domain
+
+### Bonus Step: Filtering Aliases using folders
+Now our various email aliases are working, we have the option on Mailbox.org to filter email sent to our aliases to a folder of our choice, rather than it being sent to our unified inbox - allowing for greater organisation.
+
+First, we want to create a new folder. __*Do not add email account*__
+
+![An image showing what icon to press to create a new folder](/images/folder-screenshot.png)
+
+Now make your way through **Settings > All Settings > Read & Write Email > Rules**
+
+![An image showing the Rules Setting within Read & Write Email](/images/rules-setting-screenshot.png)
+
+Create a new rule by pressing the "Add new Rule button"
+
+![An image showing the button to press to add new rule](/images/add-new-rule.png)
+
+And finally, we want to define the `condition` and `action`. 
+Create a condition `to`, and input your email address for your custom domain. Then, create a `file to` action, and set it to the folder of your choice(See below)
+
+![An image showing the condition and action parameters](/images/rule-param.png)
+
+Now press `save and apply rule now` and you're done! Try send a test email to your new email address, and it should filter into your folder - this may take a minute or two.
+Once you have recieved your test email - congrats! You have set up your own custom email domain using Porkbun and Mailbox.org!
+
