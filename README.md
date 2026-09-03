@@ -100,9 +100,9 @@ The DMARC Target, `p=none` could be set to multiple different variables:
 As mentioned above, these act as the rules, validation and resolutions for your domain.
 Then, add `postmaster@[YOUR_DOMAIN]` to your Mailbox and you are finished!
 
-Once that is complete, your custom email domain is all set and secured! Feel free to repeat Step 1 to create aliases for your email.
+Once that is complete, your custom email domain is all set and secured, although this may take a few minutes to fully register! Feel free to repeat Step 1 to create aliases for your email.
 
-If you want to further check the security of your domain
+If you want to further check the security of your domain, use [Learn DMARC](https://www.learndmarc.com/) as I found this useful in understanding how DMARC works.
 
 ### Bonus Step: Filtering Aliases using folders
 Now our various email aliases are working, we have the option on Mailbox.org to filter email sent to our aliases to a folder of our choice, rather than it being sent to our unified inbox - allowing for greater organisation.
