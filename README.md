@@ -1,6 +1,6 @@
 # Porkbun & Mailbox.org Custom Domain setup
 ## Overview
-This project shows my journey setting up my own custom email domain for business use. This will also include the lessons learnt, and instructions/guides on any further iterations I make (including DMARC, DKIM setup in the future.)
+This project shows my journey setting up my own custom email domain for personal use. This will also include the lessons learnt, and instructions/guides on any further iterations I make (including DMARC, DKIM setup in the future.)
 
 ## Key Concepts I learnt about
 
@@ -16,7 +16,7 @@ The usage of SPF (Sender Policy Framework), DKIM (DomainKeys Identified Mail) an
 I chose Porkbun primarily because of their WHOIS Privacy feature (which will prevent your details from being looked up on the WHOIS registry), their user-friendly dashboard and their competitive pricing - as I was able to get my domains for a small price compared to other registrars like GoDaddy.
 
 ## Why did I choose Mailbox.org?
-This will be a long section, as there are many factors I had to balance when choosing my personal email host - I will create a seperate document you can see to view my in depth analysis, but the shortened version is:
+This will be a long section, as there are many factors I had to balance when choosing my personal email host - I will create a separate document you can see to view my in depth analysis, but the shortened version is:
 
 Mailbox.org has a solid amount of features for 3 Euros/Month, as well as support for 50 Custom Email Domains (which can be very helpful in the future) and their extensive knowledge base which has been excellent in supporting my journey. You can find their knowledge base [here](https://kb.mailbox.org/en/private/faq/)
 
@@ -24,7 +24,7 @@ Mailbox.org has a solid amount of features for 3 Euros/Month, as well as support
 Prerequisites:
 - Already purchased/own your domain
 - A `standard` tier Mailbox.org subscription (or free trial if you want to see whether this works for you)
-- An email client (application) that is officialy supported by Mailbox.org (or your personal email provider)
+- An email client (application) that is officially supported by Mailbox.org (or your personal email provider)
     - I personally recommend Thunderbird for both Windows/Android, but you can view the list of supported applications [here](https://kb.mailbox.org/en/private/faq/compatible-web-browsers/)
 - Internet Access
 
@@ -59,7 +59,7 @@ Now, head to your Porkbun domain dashboard and make your way to the **DNS & Name
 
 ![An image showing the DNS & Nameservers area](/images/dns-general-settings.png)
 
-*You want to also enable Porkbun DNSSEC, this helps prevent cache poisoning - where an unsuspecting user is sent to what looks like your domain but is instead an attacker controlled domain. As domains are saved in cache, this means that everytime victims go to (what they think is) your domain, they instead go to the attackers website.*
+*You want to also enable Porkbun DNSSEC, this helps prevent cache poisoning - where an unsuspecting user is sent to what looks like your domain but is instead an attacker controlled domain. As domains are saved in cache, this means that every time victims go to (what they think is) your domain, they instead go to the attackers website.*
 
 Now, create a new TXT Record and fill the *Host* with the **__first__** part of the code, and the *Answer/Value* with the **last** part of the code.
 
@@ -125,5 +125,13 @@ Create a condition `to`, and input your email address for your custom domain. Th
 ![An image showing the condition and action parameters](/images/rule-param.png)
 
 Now press `save and apply rule now` and you're done! Try send a test email to your new email address, and it should filter into your folder - this may take a minute or two.
-Once you have recieved your test email - congrats! You have set up your own custom email domain using Porkbun and Mailbox.org!
+Once you have received your test email - congrats! You have set up your own custom email domain using Porkbun and Mailbox.org!
 
+### Lessons Learnt
+This project taught me how to prevent spoofing using email authentication methods like DKIM/DMARC, as well as how much the older internet was built around trust - and not security. This highlights to me the importance of checking these records when investigating suspicious emails in the future, and why SOC analysts check them.
+
+I further gained more knowledge about web security (Cache Poisoning specifically), learning what happens when an attacker tries this type of attack, and how using settings like DNSSEC prevents it.
+
+### Results
+You can view the DMARC results [here](/dmarc-results.md) or view the screenshot below:
+![An image showing the DMARC results](/images/dmarc.png)
