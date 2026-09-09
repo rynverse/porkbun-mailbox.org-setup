@@ -4,7 +4,7 @@ This project shows my journey setting up my own custom email domain for personal
 
 ## Key Concepts I learnt about
 
-The usage of SPF (Sender Policy Framework), DKIM (DomainKeys Identified Mail) and DMARC (Domain-based Message Authentication, Reporting and Comformance) can be simplified significantly
+The usage of SPF (Sender Policy Framework), DKIM (DomainKeys Identified Mail) and DMARC (Domain-based Message Authentication, Reporting and Conformance) can be simplified significantly
 
 > Rules -> Validation -> Resolution
 
